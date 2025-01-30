@@ -1,3 +1,7 @@
+This project is to create a phone application equivalent for this web application to connect the direct messaging and posting of various social media
+
+
+
 <p align="center">
   <a href="https://affiliate.postiz.com">
     <img src="https://github.com/user-attachments/assets/af9f47b3-e20c-402b-bd11-02f39248d738" />
