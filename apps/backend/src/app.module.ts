@@ -1,4 +1,9 @@
 import { Global, Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { SocialController } from './controllers/social.controller';
+import { XProvider } from '@gitroom/nestjs-libraries/integrations/social/x.provider';
+import { JwtStrategy } from './strategies/jwt.strategy';
+import { PrismaService } from '@gitroom/nestjs-libraries/database/prisma/prisma.service';
 
 import { DatabaseModule } from '@gitroom/nestjs-libraries/database/prisma/database.module';
 import { ApiModule } from '@gitroom/backend/api/api.module';
@@ -13,6 +18,9 @@ import { ThrottlerModule } from '@nestjs/throttler';
 @Global()
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     BullMqModule,
     DatabaseModule,
     ApiModule,
@@ -25,7 +33,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
       },
     ]),
   ],
-  controllers: [],
+  controllers: [SocialController],
   providers: [
     {
       provide: APP_GUARD,
@@ -35,6 +43,9 @@ import { ThrottlerModule } from '@nestjs/throttler';
       provide: APP_GUARD,
       useClass: PoliciesGuard,
     },
+    XProvider,
+    JwtStrategy,
+    PrismaService,
   ],
   get exports() {
     return [...this.imports];
