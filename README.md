@@ -1,4 +1,4 @@
-This project is to create a phone application equivalent for this web application to connect the direct messaging and posting of various social media
+*****This project is to create a phone application equivalent for the POSTIZ web application. This app connects the direct messaging and posting of various social media to make things more seamless**** 
 
 
 
